@@ -23,9 +23,15 @@
                                     <i class="fa fa-ellipsis-h"></i>
                                 </li>
 								<!-- Purchases -->
+								<li>
+                                    <a href="<?=base_url()?>soedit"><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">SO Edit</span></a>
+                                </li>
+								
 								 <li>
                                     <a href="<?=base_url()?>socharts"><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">SO Charts</span></a>
                                 </li>
+								
+								
 								
                                 <li>
                                     <a href="<?=base_url()?>communications"><i class="gi gi-compass sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Communications</span></a>
