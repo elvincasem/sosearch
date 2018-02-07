@@ -6,7 +6,7 @@ class Soedit_model extends CI_Model
 	
 	public function keywordsearch($keyword)
 	{
-		$users = $this->db->query("SELECT lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where so_application.so_id=".$this->db->escape($keyword)."");
+		$users = $this->db->query("SELECT so_application_names.index,lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where so_application.so_id=".$this->db->escape($keyword)."");
 		return $users->result_array();
 		
 		
@@ -48,27 +48,37 @@ class Soedit_model extends CI_Model
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public function get()
+	public function updatename($nameindex,$lname,$fname,$mname)
 	{
-		$users = $this->db->query("SELECT * from purchase_apr");
-		return $users->result_array();
+				
+		$sql = "update so_application_names set lname=".$this->db->escape($lname).",fname=".$this->db->escape($fname).",mname=".$this->db->escape($mname)." where so_application_names.index=".$this->db->escape($nameindex)."";
+		echo $sql;
+		$this->db->query($sql);
+
 		
 		
 	}
+	public function deletename($nameindex)
+	{
+		$this->db->delete('so_application_names', array('index' => $nameindex)); 
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public function getsuppliers()
 	{

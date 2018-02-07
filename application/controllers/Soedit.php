@@ -91,6 +91,19 @@ class Soedit extends CI_Controller
 		$this->soedit_model->updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id);
 	}
 	
+	public function updatename(){
+		$nameindex = $this->input->post('nameindex');
+		$lname = $this->input->post('lname');
+		$fname = $this->input->post('fname');
+		$mname = $this->input->post('mname');
+		
+		$this->soedit_model->updatename($nameindex,$lname,$fname,$mname);
+	}
+	public function deletename(){
+		$nameindex = $this->input->post('id');
+		
+		$this->soedit_model->deletename($nameindex);
+	}
 	
 	
 	

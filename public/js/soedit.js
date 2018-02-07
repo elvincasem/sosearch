@@ -136,6 +136,65 @@ function updateso(){
 }
 
 
+
+function updatename(nameindex){
+	
+		var lname = document.getElementById("lname-"+nameindex).value;
+		var fname = document.getElementById("fname-"+nameindex).value;
+		var mname = document.getElementById("mname-"+nameindex).value;
+		
+		$.ajax({
+                    url: 'soedit/updatename',
+                    type: 'post',
+                    data: {nameindex: nameindex,lname:lname,fname:fname,mname:mname},
+                    success: function(response) {
+						console.log(response);
+						$.bootstrapGrowl('<h4><strong>Success!</strong></h4> <p>Item Updated!</p>', {
+							type: 'success',
+							delay: 3000,
+							allow_dismiss: true,
+							offset: {from: 'top', amount: 20}
+						});
+						setTimeout(function () { location.reload(); }, 100);
+                    }
+		});
+}
+
+
+function deletename(id){
+	
+	var r = confirm("Are your sure you want to delete this record?");
+    if (r == true) {
+        //alert ("You pressed OK!");
+		var person = prompt("Please enter Administrator Password");
+		if (person =='superadmin') {
+		$.ajax({
+                    url: 'soedit/deletename',
+                    type: 'post',
+                    data: {id: id},
+                    success: function(response) {
+						console.log(response);
+						setTimeout(function () { location.reload(); }, 100);
+						
+                    }
+                });
+		}else{
+			alert("Invalid Password");
+		}
+		
+    } if(r == false) {
+        //txt = "You pressed Cancel!";
+		
+    }
+	
+}
+
+
+
+
+
+
+
 $("#itemqty").keypress(function (e) {
     if (e.which == 13) {
         

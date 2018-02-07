@@ -115,7 +115,7 @@
 
 			</select>
 			<select id="grad_day" name="example-select2" class="select-select2" style="width: 25%;" data-placeholder="Choose one.." >
-							<option value="0"></option>
+							<option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -341,6 +341,7 @@
 						<th>Last Name</th>
 						<th>First Name</th>
                         <th>Middle Name</th>
+                        <th>Action</th>
                         <th>Status</th>
                         <th>Program</th>
                         <th>HEI</th>
@@ -356,9 +357,16 @@
 				//$heiname = strtoupper($hei['instname']);
 				echo "<tr class='odd gradeX'>";
 				
-				echo "<td>".$so_list['lname']."</td>";
-				echo "<td>".$so_list['fname']."</td>";
-				echo "<td>".$so_list['mname']."</td>";
+				echo "<td><input type='text' id='lname-".$so_list['index']."' class='form-control' value=".$so_list['lname']."></td>";
+				echo "<td><input type='text' id='fname-".$so_list['index']."' class='form-control' value=".$so_list['fname']."></td>";
+				echo "<td><input type='text' id='mname-".$so_list['index']."' class='form-control' value=".$so_list['mname']."></td>";
+				echo "<td class='center'> 
+					
+					<button class='btn btn-primary notification' title='Update Name' id='notification' onClick='updatename(".$so_list['index'].")'><i class='fa fa-floppy-o'></i></button>
+					
+					<button class='btn btn-danger notification' title='Delete Name' id='notification' onClick='deletename(".$so_list['index'].")'><i class='fa fa-times'></i></button>
+				</td>";
+				
 				echo "<td>".$so_list['status']."</td>";
 				echo "<td>".$so_list['ProgName']."</td>";
 				echo "<td>".$so_list['InstName']."</td>";
