@@ -346,6 +346,7 @@
                         <th>Program</th>
                         <th>HEI</th>
                         <th>SO Number/Date Numbered</th>
+                        <th>Remarks</th>
                         
 						
                     </tr>
@@ -355,11 +356,13 @@
 				
 				foreach ($result_list as $so_list):
 				//$heiname = strtoupper($hei['instname']);
+				
+				
 				echo "<tr class='odd gradeX'>";
 				
-				echo "<td><input type='text' id='lname-".$so_list['index']."' class='form-control' value=".$so_list['lname']."></td>";
-				echo "<td><input type='text' id='fname-".$so_list['index']."' class='form-control' value=".$so_list['fname']."></td>";
-				echo "<td><input type='text' id='mname-".$so_list['index']."' class='form-control' value=".$so_list['mname']."></td>";
+				echo "<td><input type='text' id='lname-".$so_list['index']."' class='form-control' value='".$so_list['lname']."'></td>";
+				echo "<td><input type='text' id='fname-".$so_list['index']."' class='form-control' value='".$so_list['fname']."'></td>";
+				echo "<td><input type='text' id='mname-".$so_list['index']."' class='form-control' value='".$so_list['mname']."'></td>";
 				echo "<td class='center'> 
 					
 					<button class='btn btn-primary notification' title='Update Name' id='notification' onClick='updatename(".$so_list['index'].")'><i class='fa fa-floppy-o'></i></button>
@@ -370,9 +373,10 @@
 				echo "<td>".$so_list['status']."</td>";
 				echo "<td>".$so_list['ProgName']."</td>";
 				echo "<td>".$so_list['InstName']."</td>";
+				
 				echo "<td>".$so_list['so_number']." ".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
 				//echo "<td>".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
-				
+				echo "<td>".$so_list['remarks']."</td>";
 			
 				
 				echo "</tr>";

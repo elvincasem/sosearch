@@ -6,7 +6,7 @@ class Soedit_model extends CI_Model
 	
 	public function keywordsearch($keyword)
 	{
-		$users = $this->db->query("SELECT so_application_names.index,lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where so_application.so_id=".$this->db->escape($keyword)."");
+		$users = $this->db->query("SELECT so_application_names.index,lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered,remarks FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where so_application.so_id=".$this->db->escape($keyword)."");
 		return $users->result_array();
 		
 		
