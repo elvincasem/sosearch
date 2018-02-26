@@ -70,6 +70,7 @@ class Soedit extends CI_Controller
 		//show apr list
 		$data['heilist'] = $this->soedit_model->gethei();
 		$data['programlist'] = $this->soedit_model->getprograms();
+		$data['memberlist'] = $this->soedit_model->getmember();
 		
 		//display apr
 		$this->load->view('inc/header_search_view');
@@ -88,7 +89,8 @@ class Soedit extends CI_Controller
 		$sem_enrolled = $this->input->post('sem_enrolled');
 		$acad_year = $this->input->post('acad_year');
 		$prog_id = $this->input->post('prog_id');
-		$this->soedit_model->updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id);
+		$assigned_to = $this->input->post('assigned_to');
+		$this->soedit_model->updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id,$assigned_to);
 	}
 	
 	public function updatename(){

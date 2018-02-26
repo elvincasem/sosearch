@@ -313,6 +313,39 @@
 			</select>
 			
 		</div>	
+		<?php //print_r($sodetails);?>
+		<div class="row"></div>
+		<label class="col-md-2 control-label" for="state-normal">Supervisor:</label>
+		<div class="col-md-4">
+			<select id="assigned_to" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Choose one.." >
+							<option value=""></option>
+			<?php
+			
+			$assigned_to = $sodetails['assigned_to'];
+			
+				
+			
+			
+			foreach ($memberlist as $mem_list):
+				
+				if($mem_list['member_id']==$assigned_to){
+					
+					$selectedprog = "selected='selected'";
+					
+				}else{
+					$selectedprog = "";
+				}
+			
+				echo "<option value='".$mem_list['member_id']."' $selectedprog>".$mem_list['member_id']."-".$mem_list['firstname']." ".$mem_list['lastname']." (".$mem_list['login'].")</option>";
+			
+			endforeach;
+			
+			?>
+			
+			
+			</select>
+			
+		</div>	
 		
 		
 						

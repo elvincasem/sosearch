@@ -59,6 +59,7 @@
                         <th>Status</th>
                         <th>Program</th>
                         <th>HEI</th>
+                        <th>SO ID</th>
                         <th>SO Number/Date Numbered</th>
                         
 						
@@ -77,6 +78,7 @@
 				echo "<td>".$so_list['status']."</td>";
 				echo "<td>".$so_list['ProgName']."</td>";
 				echo "<td>".$so_list['InstName']."</td>";
+				echo "<td>".$so_list['so_id']."</td>";
 				echo "<td>".$so_list['so_number']." ".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
 				//echo "<td>".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
 				
