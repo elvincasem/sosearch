@@ -59,10 +59,14 @@ class Soedit extends CI_Controller
 		if($keyword!=""){
 			$data['result_list'] = $this->soedit_model->keywordsearch($keyword);
 			$data['sodetails'] =  $this->soedit_model->sodetails($keyword);
+			$data['statuslist'] =  $this->soedit_model->statuslist();
+			$data['statuslist_names'] =  $this->soedit_model->statuslist_names();
 			$data['keyword'] = $keyword;
 		}else{
 			$data['result_list'] = array();
 			$data['sodetails'] =   array();
+			$data['statuslist'] =   array();
+			$data['statuslist_names'] =  array();
 			$data['keyword'] = "";
 			
 			
@@ -98,8 +102,9 @@ class Soedit extends CI_Controller
 		$lname = $this->input->post('lname');
 		$fname = $this->input->post('fname');
 		$mname = $this->input->post('mname');
+		$name_status = $this->input->post('name_status');
 		
-		$this->soedit_model->updatename($nameindex,$lname,$fname,$mname);
+		$this->soedit_model->updatename($nameindex,$lname,$fname,$mname,$name_status);
 	}
 	public function deletename(){
 		$nameindex = $this->input->post('id');

@@ -346,8 +346,35 @@
 			</select>
 			
 		</div>	
-		
-		
+		<div class="row"></div>
+		<label class="col-md-2 control-label" for="state-normal">Status:</label>
+		<div class="col-md-4">
+			<select id="sostatus" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Choose one.." disabled>
+							
+			<?php
+			$so_status = $sodetails['status'];
+			
+			foreach ($statuslist as $slist):
+				
+				if($slist['status']==$so_status){
+					
+					$selectedstat = "selected='selected'";
+					
+				}else{
+					$selectedstat = "";
+				}
+			
+				echo "<option value='".$slist['status']."' $selectedstat>".$slist['status']."</option>";
+			
+			endforeach;
+			
+			?>
+			
+			
+			</select>
+			
+		</div>	
+	
 						
 								<button id="savedrbutton" class="btn btn-primary" title="Update" onclick="updateso();" ><i class="fa fa-floppy-o"></i> Update</button>
 						
@@ -374,8 +401,8 @@
 						<th>Last Name</th>
 						<th>First Name</th>
                         <th>Middle Name</th>
-                        <th>Action</th>
                         <th>Status</th>
+                        <th>Action</th>
                         <th>Program</th>
                         <th>HEI</th>
                         <th>SO Number/Date Numbered</th>
@@ -396,14 +423,39 @@
 				echo "<td><input type='text' id='lname-".$so_list['index']."' class='form-control' value='".$so_list['lname']."'></td>";
 				echo "<td><input type='text' id='fname-".$so_list['index']."' class='form-control' value='".$so_list['fname']."'></td>";
 				echo "<td><input type='text' id='mname-".$so_list['index']."' class='form-control' value='".$so_list['mname']."'></td>";
+				
+				
+				//echo "<td>".$so_list['status']."</td>";
+				echo "<td>
+				<select id='name_status-".$so_list['index']."' name='xample-select2' class='select-select2' style='width: 100%;' data-placeholder='Choose one..' >";
+							
+			
+			$so_status_names = $so_list['status'];
+			
+			foreach ($statuslist_names as $slist_names):
+				
+				if($slist_names['status']==$so_status_names){
+					
+					$selectednames = "selected='selected'";
+					
+				}else{
+					$selectednames = "";
+				}
+			
+				echo "<option value='".$slist_names['status']."' $selectednames>".$slist_names['status']."</option>";
+			
+			endforeach;
+			
+			
+			
+			
+				echo "</select></td>";
 				echo "<td class='center'> 
 					
 					<button class='btn btn-primary notification' title='Update Name' id='notification' onClick='updatename(".$so_list['index'].")'><i class='fa fa-floppy-o'></i></button>
 					
 					<button class='btn btn-danger notification' title='Delete Name' id='notification' onClick='deletename(".$so_list['index'].")'><i class='fa fa-times'></i></button>
 				</td>";
-				
-				echo "<td>".$so_list['status']."</td>";
 				echo "<td>".$so_list['ProgName']."</td>";
 				echo "<td>".$so_list['InstName']."</td>";
 				

@@ -143,11 +143,12 @@ function updatename(nameindex){
 		var lname = document.getElementById("lname-"+nameindex).value;
 		var fname = document.getElementById("fname-"+nameindex).value;
 		var mname = document.getElementById("mname-"+nameindex).value;
+		var name_status = document.getElementById("name_status-"+nameindex).value;
 		
 		$.ajax({
                     url: 'soedit/updatename',
                     type: 'post',
-                    data: {nameindex: nameindex,lname:lname,fname:fname,mname:mname},
+                    data: {nameindex: nameindex,lname:lname,fname:fname,mname:mname,name_status:name_status},
                     success: function(response) {
 						console.log(response);
 						$.bootstrapGrowl('<h4><strong>Success!</strong></h4> <p>Item Updated!</p>', {

@@ -19,10 +19,24 @@ class Soedit_model extends CI_Model
 		
 		
 	}
+	public function statuslist()
+	{
+		$users = $this->db->query("SELECT DISTINCT(status) FROM so_application");
+		return $users->result_array();
+		
+		
+	}
+	public function statuslist_names()
+	{
+		$users = $this->db->query("SELECT DISTINCT(status) FROM so_application_names");
+		return $users->result_array();
+		
+		
+	}
 	
 	public function sodetails($keyword)
 	{
-		$users = $this->db->query("SELECT *from so_application where so_application.so_id=".$this->db->escape($keyword)."");
+		$users = $this->db->query("SELECT * from so_application where so_application.so_id=".$this->db->escape($keyword)."");
 		$result =  $users->result_array();
 		return $result[0];
 		
@@ -56,10 +70,10 @@ class Soedit_model extends CI_Model
 		
 	}
 	
-	public function updatename($nameindex,$lname,$fname,$mname)
+	public function updatename($nameindex,$lname,$fname,$mname,$name_status)
 	{
 				
-		$sql = "update so_application_names set lname=".$this->db->escape($lname).",fname=".$this->db->escape($fname).",mname=".$this->db->escape($mname)." where so_application_names.index=".$this->db->escape($nameindex)."";
+		$sql = "update so_application_names set lname=".$this->db->escape($lname).",fname=".$this->db->escape($fname).",mname=".$this->db->escape($mname).",status=".$this->db->escape($name_status)." where so_application_names.index=".$this->db->escape($nameindex)."";
 		echo $sql;
 		$this->db->query($sql);
 
