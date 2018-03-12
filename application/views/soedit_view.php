@@ -283,7 +283,7 @@
 		<div class="row"></div>
 		
 		<label class="col-md-2 control-label" for="state-normal">Program:</label>
-		<div class="col-md-4">
+		<div class="col-md-6">
 			<select id="prog_id" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Choose one.." >
 							<option value=""></option>
 			<?php
@@ -303,7 +303,7 @@
 					$selectedprog = "";
 				}
 			
-				echo "<option value='".$prog_list['ProgID']."' $selectedprog>".$prog_list['ProgName']."</option>";
+				echo "<option value='".$prog_list['ProgID']."' $selectedprog>".$prog_list['InstName']."-".$prog_list['ProgName']."(".$prog_list['GP_GR_Positive'].") </option>";
 			
 			endforeach;
 			
