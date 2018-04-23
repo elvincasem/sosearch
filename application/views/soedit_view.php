@@ -349,7 +349,7 @@
 		<div class="row"></div>
 		<label class="col-md-2 control-label" for="state-normal">Status:</label>
 		<div class="col-md-4">
-			<select id="sostatus" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Choose one.." disabled>
+			<select id="sostatus" name="example-select2" class="select-select2" style="width: 100%;" data-placeholder="Choose one..">
 							
 			<?php
 			$so_status = $sodetails['status'];

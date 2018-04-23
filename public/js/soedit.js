@@ -118,12 +118,13 @@ function updateso(){
 		var acad_year = document.getElementById("acad_year").value;
 		var prog_id = document.getElementById("prog_id").value;
 		var assigned_to = document.getElementById("assigned_to").value;
+		var sostatus = document.getElementById("sostatus").value;
 		
 		//get item details
 		$.ajax({
                     url: 'soedit/updateso',
                     type: 'post',
-                    data: {so_id: so_id,instcode:instcode,number_of_students:number_of_students,grad_month:grad_month,grad_day:grad_day,grad_year:grad_year,sem_enrolled:sem_enrolled,acad_year:acad_year,prog_id:prog_id,assigned_to:assigned_to},
+                    data: {so_id: so_id,instcode:instcode,number_of_students:number_of_students,grad_month:grad_month,grad_day:grad_day,grad_year:grad_year,sem_enrolled:sem_enrolled,acad_year:acad_year,prog_id:prog_id,assigned_to:assigned_to,sostatus:sostatus},
                     success: function(response) {
 						$.bootstrapGrowl('<h4><strong>Success!</strong></h4> <p>Item Updated!</p>', {
 							type: 'success',

@@ -1,17 +1,17 @@
 <?php
 
-class Soedit extends CI_Controller
+class Test extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		//model module
-		$this->load->model('soedit_model');
-		
+		$this->load->model('apr_model');
+		$this->load->model('asset_model');
 		$this->load->helper('date');
 		//view module
 		 $this->data = array(
-            'title' => 'Special Order',
+            'title' => 'Purchases',
 			'purchasesclass' => 'active',
 			'aprclass' => 'active',
 			'prclass' => '',
@@ -32,7 +32,7 @@ class Soedit extends CI_Controller
 			'suppliersclass' => '',
 			'employeesclass' => '',
 			'inventoryclass' => '',
-			'subnavtitle' => 'Student Search',
+			'subnavtitle' => 'Agency Procurement Request',
 			'typeahead' => '1',
 			'parclass' => '',
 			'icsclass' => '',
@@ -44,76 +44,26 @@ class Soedit extends CI_Controller
 			);
 		//javascript module
 		$this->js = array(
-            'jsfile' => 'soedit.js',
+            'jsfile' => 'purchases.js',
 			'typeahead' => '1'
 			);
 	}
 	
 	public function index()
 	{
-		$data = $this->data;
-		$js = $this->js;
-		
-		$keyword = $this->input->post('keyword');
-		
-		if($keyword!=""){
-			$data['result_list'] = $this->soedit_model->keywordsearch($keyword);
-			$data['sodetails'] =  $this->soedit_model->sodetails($keyword);
-			$data['statuslist'] =  $this->soedit_model->statuslist();
-			$data['statuslist_names'] =  $this->soedit_model->statuslist_names();
-			$data['keyword'] = $keyword;
-		}else{
-			$data['result_list'] = array();
-			$data['sodetails'] =   array();
-			$data['statuslist'] =   array();
-			$data['statuslist_names'] =  array();
-			$data['keyword'] = "";
-			
-			
-		}
+		//$data = $this->data;
+		//$js = $this->js;
 		//show apr list
-		$data['heilist'] = $this->soedit_model->gethei();
-		$data['programlist'] = $this->soedit_model->getprograms();
-		$data['memberlist'] = $this->soedit_model->getmember();
+		//$data['apr_list'] = $this->apr_model->get();
 		
 		//display apr
-		$this->load->view('inc/header_search_view');
-		$this->load->view('soedit_view',$data);
-		$this->load->view('inc/footer_view',$js);
+		//$this->load->view('inc/header_view');
+		//$this->load->view('purchases/apr_view',$data);
+		//$this->load->view('inc/footer_view',$js);
+		$pwd = password_hash("admin",PASSWORD_DEFAULT)."\n";
+		
 		
 	}
-	
-	public function updateso(){
-		$so_id = $this->input->post('so_id');
-		$instcode = $this->input->post('instcode');
-		$number_of_students = $this->input->post('number_of_students');
-		$grad_month = $this->input->post('grad_month');
-		$grad_day = $this->input->post('grad_day');
-		$grad_year = $this->input->post('grad_year');
-		$sem_enrolled = $this->input->post('sem_enrolled');
-		$acad_year = $this->input->post('acad_year');
-		$prog_id = $this->input->post('prog_id');
-		$assigned_to = $this->input->post('assigned_to');
-		$sostatus = $this->input->post('sostatus');
-		$this->soedit_model->updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id,$assigned_to,$sostatus);
-	}
-	
-	public function updatename(){
-		$nameindex = $this->input->post('nameindex');
-		$lname = $this->input->post('lname');
-		$fname = $this->input->post('fname');
-		$mname = $this->input->post('mname');
-		$name_status = $this->input->post('name_status');
-		
-		$this->soedit_model->updatename($nameindex,$lname,$fname,$mname,$name_status);
-	}
-	public function deletename(){
-		$nameindex = $this->input->post('id');
-		
-		$this->soedit_model->deletename($nameindex);
-	}
-	
-	
 	
 	public function details($id)
 	{

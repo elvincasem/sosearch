@@ -59,10 +59,10 @@ class Soedit_model extends CI_Model
 		
 	}
 	
-	public function updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id,$assigned_to)
+	public function updateso($so_id,$instcode,$number_of_students,$grad_month,$grad_day,$grad_year,$sem_enrolled,$acad_year,$prog_id,$assigned_to,$sostatus)
 	{
 				
-		$sql = "update so_application set InstCode=".$this->db->escape($instcode).",prog_id=".$this->db->escape($prog_id).",number_of_students=".$this->db->escape($number_of_students).",grad_month=".$this->db->escape($grad_month).",grad_day=".$this->db->escape($grad_day).",grad_year=".$this->db->escape($grad_year).",sem_enrolled=".$this->db->escape($sem_enrolled).",acad_year=".$this->db->escape($acad_year).",assigned_to=".$this->db->escape($assigned_to)." where so_id=".$this->db->escape($so_id)."";
+		$sql = "update so_application set InstCode=".$this->db->escape($instcode).",prog_id=".$this->db->escape($prog_id).",number_of_students=".$this->db->escape($number_of_students).",grad_month=".$this->db->escape($grad_month).",grad_day=".$this->db->escape($grad_day).",grad_year=".$this->db->escape($grad_year).",sem_enrolled=".$this->db->escape($sem_enrolled).",acad_year=".$this->db->escape($acad_year).",assigned_to=".$this->db->escape($assigned_to).",status=".$this->db->escape($sostatus)." where so_id=".$this->db->escape($so_id)."";
 
 		$this->db->query($sql);
 
