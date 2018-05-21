@@ -456,10 +456,16 @@
 					
 					<button class='btn btn-danger notification' title='Delete Name' id='notification' onClick='deletename(".$so_list['index'].")'><i class='fa fa-times'></i></button>
 				</td>";
+				
 				echo "<td>".$so_list['ProgName']."</td>";
 				echo "<td>".$so_list['InstName']."</td>";
+				if($so_status_names=="CANCELLED"){
+					echo "<td>".mdate('%F %d, %Y',strtotime($so_list['date_reco_approval']))."</td>";
+				}else{
+					echo "<td>".$so_list['so_number']." ".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
+				}
 				
-				echo "<td>".$so_list['so_number']." ".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
+				
 				//echo "<td>".mdate('%F %d, %Y',strtotime($so_list['date_numbered']))."</td>";
 				echo "<td>".$so_list['remarks']."</td>";
 			

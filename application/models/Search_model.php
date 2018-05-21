@@ -6,7 +6,7 @@ class Search_model extends CI_Model
 	
 	public function keywordsearch($keyword)
 	{
-		$users = $this->db->query("SELECT lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered,so_application_names.so_id FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where lname like '%$keyword%' or fname like '%$keyword%'");
+		$users = $this->db->query("SELECT lname,fname,mname,so_application_names.status,ProgName,InstName,so_number,date_numbered,so_application_names.so_id,date_reco_approval FROM so_application_names LEFT JOIN so_application_remarks ON so_application_names.index = so_application_remarks.index LEFT JOIN so_application ON so_application_names.so_id = so_application.so_id left join programs on so_application.prog_id = programs.ProgID where lname like '%$keyword%' or fname like '%$keyword%'");
 		return $users->result_array();
 		
 		
